@@ -1,10 +1,10 @@
 import type { PipelineStep } from './types.js';
-import { delay } from './util.js';
+import { tickProgress } from './util.js';
 
 const step: PipelineStep = {
   name: 'prepare',
-  run: async (_ctx) => {
-    await delay(1500);
+  run: async (ctx) => {
+    await tickProgress(1500, 0, 33, ctx.onProgress);
   },
 };
 

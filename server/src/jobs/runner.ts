@@ -11,10 +11,13 @@ async function runJob(jobId: string): Promise<void> {
   jobEvents.emit('progress', { jobId, progress: 0 });
 
   for (let i = 0; i < STEPS.length; i++) {
-    await STEPS[i].run({ jobId });
-    const progress = Math.round(((i + 1) / STEPS.length) * 100);
-    updateJob(jobId, { progress });
-    jobEvents.emit('progress', { jobId, progress });
+    await STEPS[i].run({
+      jobId,
+      onProgress: (pct: number) => {
+        updateJob(jobId, { progress: pct });
+        jobEvents.emit('progress', { jobId, progress: pct });
+      },
+    });
   }
 
   const result = { message: 'Your plan is ready', rating: 5 };
