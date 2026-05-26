@@ -1,5 +1,6 @@
 import type { OnboardingHandle } from '../state/onboarding';
 import SelectCard from '../components/SelectCard';
+import Button from '../components/Button';
 import styles from './Step1Wish.module.css';
 
 const WISHES = [
@@ -18,18 +19,23 @@ export default function Step1Wish({ onboarding }: Props) {
   return (
     <div className={styles.screen}>
       <h1 className={styles.title}>What is your main wish?</h1>
-      <ul className={styles.list}>
+      <ul className={styles.list} role="list">
         {WISHES.map(w => (
           <li key={w.id}>
             <SelectCard
               label={w.label}
               emoji={w.emoji}
               selected={state.wish === w.id}
-              onSelect={() => { setWish(w.id); next(); }}
+              onSelect={() => setWish(w.id)}
             />
           </li>
         ))}
       </ul>
+      <div className={styles.footer}>
+        <Button onClick={next} disabled={state.wish === null}>
+          Continue
+        </Button>
+      </div>
     </div>
   );
 }
