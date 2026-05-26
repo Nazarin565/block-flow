@@ -16,6 +16,8 @@ const updateStmt = db.prepare<[JobStatus | null, number | null, string | null, s
   'UPDATE jobs SET status = COALESCE(?, status), progress = COALESCE(?, progress), result = COALESCE(?, result) WHERE id = ?'
 );
 
+const deleteStmt = db.prepare<[string]>('DELETE FROM jobs WHERE id = ?');
+
 export function createJob(): Job {
   const id = nanoid();
   const createdAt = Date.now();
@@ -34,6 +36,11 @@ export function getJob(id: string): Job | null {
     status: row.status as JobStatus,
     result: row.result !== null ? JSON.parse(row.result) as unknown : null,
   };
+}
+
+export function deleteJob(id: string): void {
+  const { changes } = deleteStmt.run(id);
+  if (changes === 0) console.warn(`deleteJob: job ${id} not found — nothing deleted`);
 }
 
 export function updateJob(
