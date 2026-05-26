@@ -1,0 +1,27 @@
+.wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.arc {
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.label {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2dbf7e;
+  position: relative;
+  z-index: 1;
+}

@@ -2,34 +2,44 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 15px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   border: none;
-  transition: opacity 0.15s;
+  transition: opacity 0.15s, background 0.15s;
+  width: 100%;
 }
 
 .button:disabled {
-  opacity: 0.4;
   cursor: not-allowed;
 }
 
 .primary {
-  background: #111827;
+  background: #2dbf7e;
   color: #fff;
 }
 
+.primary:disabled {
+  background: #a8dfc5;
+  color: #fff;
+  opacity: 1;
+}
+
 .primary:hover:not(:disabled) {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .secondary {
-  background: #f3f4f6;
+  background: #f0f0f5;
   color: #111827;
 }
 
 .secondary:hover:not(:disabled) {
-  background: #e5e7eb;
+  background: #e4e4ec;
+}
+
+.secondary:disabled {
+  opacity: 0.4;
 }

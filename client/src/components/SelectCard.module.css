@@ -1,28 +1,30 @@
 .card {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   width: 100%;
-  padding: 14px 16px;
-  border: 1.5px solid #e5e7eb;
-  border-radius: 10px;
+  padding: 18px 20px;
+  border: none;
+  border-radius: 14px;
   background: #fff;
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.15s;
+  transition: box-shadow 0.15s, background 0.15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 .card:hover {
-  border-color: #9ca3af;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
 
 .card.selected {
-  border-color: #111827;
+  background: #eaf8f1;
+  box-shadow: 0 1px 3px rgba(45,191,126,0.15);
 }
 
 .indicator {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   border: 2px solid #d1d5db;
   flex-shrink: 0;
@@ -30,11 +32,17 @@
 }
 
 .card.selected .indicator {
-  border-color: #111827;
-  background: #111827;
+  border-color: #2dbf7e;
+  background: #2dbf7e;
+}
+
+.emoji {
+  font-size: 22px;
+  flex-shrink: 0;
 }
 
 .label {
-  font-size: 15px;
-  color: #111827;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a2e;
 }
