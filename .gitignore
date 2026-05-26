@@ -40,6 +40,7 @@ Thumbs.db
 # Claude Code (local agent config and instructions)
 .claude/
 CLAUDE.md
+agent.log
 
 # Test / coverage
 coverage/
