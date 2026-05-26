@@ -3,6 +3,7 @@ import { pathToFileURL } from 'node:url';
 import express from 'express';
 import cors from 'cors';
 import config from './config.js';
+import './db/client.js';
 
 const app = express();
 
