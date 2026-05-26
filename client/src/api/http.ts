@@ -2,8 +2,8 @@ import type { Job } from './types';
 
 const BASE = import.meta.env.VITE_API_BASE_URL;
 
-export async function createJob(): Promise<{ id: string }> {
-  const res = await fetch(`${BASE}/jobs`, { method: 'POST' });
+export async function createJob(signal?: AbortSignal): Promise<{ id: string }> {
+  const res = await fetch(`${BASE}/jobs`, { method: 'POST', signal });
   if (!res.ok) throw new Error(`createJob failed: ${res.status}`);
   return res.json() as Promise<{ id: string }>;
 }
