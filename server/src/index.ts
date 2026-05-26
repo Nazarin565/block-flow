@@ -5,6 +5,7 @@ import cors from 'cors';
 import config from './config.js';
 import './db/client.js';
 import jobsRouter from './routes/jobs.js';
+import { attachWsServer } from './ws/server.js';
 
 const app = express();
 
@@ -23,6 +24,8 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
 });
 
 const httpServer = http.createServer(app);
+
+attachWsServer(httpServer);
 
 function startServer() {
   httpServer.listen(config.port, () => {
