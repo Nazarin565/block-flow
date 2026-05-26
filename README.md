@@ -2,10 +2,10 @@
 
 A full-stack demo app: a 3-step onboarding wizard followed by a job-processing screen that runs a backend pipeline two ways — live progress over **WebSocket** and status polling over **HTTP**.
 
-**Live links** *(filled in after deploy)*
-- Frontend: `https://<firebase-app>.web.app`
-- Backend: `https://<render-url>/health`
-- GitHub: `https://github.com/<your-handle>/BlockFlow`
+**Live links**
+- Frontend: https://block-flow-565.web.app
+- Backend: https://block-flow.onrender.com/health
+- GitHub: https://github.com/Nazarin565/block-flow
 
 ---
 
