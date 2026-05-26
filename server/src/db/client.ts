@@ -1,8 +1,11 @@
 import Database from 'better-sqlite3';
+import { mkdirSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
 import config from '../config.js';
 
 function openDatabase(): Database.Database {
   try {
+    mkdirSync(dirname(resolve(config.databasePath)), { recursive: true });
     const db = new Database(config.databasePath);
     db.pragma('journal_mode = WAL');
     db.pragma('foreign_keys = ON');
