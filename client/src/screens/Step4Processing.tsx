@@ -247,16 +247,27 @@ export default function Step4Processing({ onboarding }: Props) {
         </>
       )}
 
-      {isDone && (
-        <>
-          <h1 className={styles.title}>Your plan is ready!</h1>
-          {result !== null && (
+      {isDone && result !== null && (() => {
+        const r = result as { title: string; rating: number; summary: string; steps: string[] };
+        return (
+          <>
+            <div className={styles.successIcon}>🎉</div>
+            <h1 className={styles.title}>{r.title}</h1>
+            <div className={styles.resultStars}>{'★'.repeat(r.rating)}</div>
             <div className={styles.resultCard}>
-              <pre className={styles.resultJson}>{JSON.stringify(result, null, 2)}</pre>
+              <p className={styles.resultSummary}>{r.summary}</p>
+              <ul className={styles.resultSteps}>
+                {r.steps.map((step, i) => (
+                  <li key={i} className={styles.resultStep}>
+                    <span className={styles.stepNum}>{i + 1}</span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          )}
-        </>
-      )}
+          </>
+        );
+      })()}
 
       {isFailed && (
         <>

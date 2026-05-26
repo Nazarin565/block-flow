@@ -20,7 +20,17 @@ async function runJob(jobId: string): Promise<void> {
     });
   }
 
-  const result = { message: 'Your plan is ready', rating: 5 };
+  const result = {
+    title: 'Your Personal Plan',
+    rating: 5,
+    summary: 'Based on your goals, we\'ve created a balanced programme tailored just for you.',
+    steps: [
+      'Start with 20 min of light activity, 3× per week',
+      'Track your meals and aim for a small daily deficit',
+      'Add one strength session per week after month 1',
+      'Review your progress every 2 weeks and adjust',
+    ],
+  };
 
   // Guard for empty STEPS: ensure progress reaches 100 before done
   if (STEPS.length === 0) {
