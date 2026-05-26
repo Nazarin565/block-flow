@@ -26,7 +26,6 @@ async function runJob(jobId: string): Promise<void> {
   }
 
   updateJob(jobId, { status: 'done', result });
-  jobEvents.emit('status', { jobId, status: 'done' });
   jobEvents.emit('done', { jobId, result });
 }
 
@@ -44,8 +43,7 @@ export function enqueueJob(jobId: string): void {
       } catch (updateErr) {
         console.error(`Failed to mark job ${jobId} as failed:`, updateErr);
       }
-      // Always emit failure events so connected WS clients are notified
-      jobEvents.emit('status', { jobId, status: 'failed' });
+      // Always emit failure event so connected WS clients are notified
       jobEvents.emit('failed', { jobId, error });
     })
     .finally(() => {
